@@ -43,7 +43,12 @@ def identify(region):
 		else:
 			return "8"
 	elif area_l == 1:
-		if area_d == 3:
+		if area_d == 2:
+				if region.image[region.image.shape[0]//2, region.image.shape[1]//2] > 0:
+					return "P"
+				else:
+					return "D"
+		elif area_d == 3:
 			return "A"
 		else:
 			return "0"
@@ -83,4 +88,4 @@ for region in regions:
 identify = str(round((1. - clr_ar[None] / sum(clr_ar.values())) * 100, 2))
 
 print("Словарь: " + str(clr_ar))
-print("Recognized: " + identify + "%")
+print("Распознано: " + identify + "%")
